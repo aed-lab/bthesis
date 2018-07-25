@@ -1,0 +1,21 @@
+\newcommand{\noopsort}[1]{} \newcommand{\printfirst}[2]{#1}
+  \newcommand{\singleletter}[1]{#1} \newcommand{\switchargs}[2]{#2#1}
+\begin{thebibliography}{1}
+
+\bibitem{TellMePorthos}
+{斬士ポルトス}.
+\newblock おしえてポルトス!!
+\newblock アトス出版, ロンドン, 1194.
+
+\bibitem{DayPosER_11_12}
+{電波神ダルタニアン}.
+\newblock 電波論文の飛ばし方 {II}.
+\newblock 日刊毒電波学会論文誌, Vol.~11, pp. 12--34, 1193.
+
+\bibitem{URLSample}
+{URL参照サンプル}.
+\newblock {URL 参照のサンプル}.
+\newblock \url{http://this.is.sample.url/xx/yy/}.
+\newblock 参照:2015.01.01.
+
+\end{thebibliography}
