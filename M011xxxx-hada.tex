@@ -1,12 +1,11 @@
 \documentclass[12pt,a4paper,report]{jsbook}
-
 \usepackage{mediathesis} % 卒論用パッケージ
 
 %% Include path の設定
-\graphicspath{{fig/}}
+\graphicspath{{fig/}} %% グラフィック用
 \makeatletter
 \providecommand*{\input@path}{}
-\g@addto@macro\input@path{{src/}{suppl/}}% append
+\g@addto@macro\input@path{{src/}{suppl/}}% tex ソースファイル用
 \makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -65,9 +64,9 @@
 
 % ここから本文ファイルを挿入
 
-\input{chap1}
+\input{chap1}     %本来は章の内容がわかる名前にしたほうが良い(01intro.tex　のように )
 \input{chap2}
-% \input{chap3}			% (ファイルを作成次第有効化)
+\input{chap3}			% (ファイルを作成次第有効化)
 % \input{chap4}			% (ファイルを作成次第有効化)
 % \input{chap5}			% (ファイルを作成次第有効化)
 % \input{chap6}			% (ファイルを作成次第有効化)
