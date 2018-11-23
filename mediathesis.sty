@@ -17,9 +17,10 @@
 %
 % ver 7.00	: 2015/10/24 : 最近の LaTeX のスタイルに合わせて全面的に改訂 (by T.Watanabe)
 % ver 7.01	: 2017/11/06 : 表紙スタイルを若干修正 (by T.Watanabe)
+% ver 7.02	: 2018/11/06 : LaTeXで寸法の扱い方が変わったのでそれに合わせて変更
 
 \typeout{Thesis style for Under Graduate School of Media Science,}
-\typeout{Ver 7.01 by Taichi Watanabe.}
+\typeout{Ver 7.02 by Taichi Watanabe.}
 
 \usepackage{amsmath, amssymb}
 \usepackage[dvipdfmx]{graphicx}
@@ -75,7 +76,7 @@
  \@nochapnumber=0
 }
 
-\def\@makechapterhead#1{ \vspace*{50pt} { \parindent 0pt \raggedright 
+\def\@makechapterhead#1{ \vspace*{50truept} { \parindent 0truept \raggedright 
  \ifnum \c@secnumdepth >\m@ne \huge\bf \begin{center}
  \ifnum \@flagappendix>0
  	\@chapapp{} \thechapter\space \par 
@@ -86,9 +87,9 @@
 		\addtocounter{chapter}{-1}
 	\fi
  \fi
- \vskip 20pt \fi \Huge \bf #1\par 
+ \vskip 20truept \fi \Huge \bf #1\par 
  \end{center}
- \nobreak \vskip 40pt } }
+ \nobreak \vskip 40truept } }
 
 \def\chapter{\clearpage \thispagestyle{plain} \global\@topnum\z@
 \@afterindenttrue \secdef\@chapter\@schapter} 
@@ -108,13 +109,13 @@
  	\numberline{ }#1}
  \else
  	\addcontentsline{toc}{chapter}{\protect
-	\numberline{\hspace*{-3.4mm}\@chapapp\thechapter 章}\hspace{1em}#1}
+	\numberline{\hspace*{-3.4truemm}\@chapapp\thechapter 章}\hspace{1em}#1}
  \fi
  \else
  \addcontentsline{toc}{chapter}{#1}\fi
  \chaptermark{#1}
- \addtocontents{lof}{\protect\addvspace{10pt}}
-\addtocontents{lot}{\protect\addvspace{10pt}} \if@twocolumn
+ \addtocontents{lof}{\protect\addvspace{10truept}}
+\addtocontents{lot}{\protect\addvspace{10truept}} \if@twocolumn
 \@topnewpage[\@makechapterhead{#2}] 
  \else \@makechapterhead{#2}
  \@afterheading \fi} 
@@ -125,22 +126,22 @@
 % 目次をセンターに持っていく。
 
 \def\tableofcontents{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
- \fi\chapter*{\begin{center} \vspace{-5mm} 目 次\@mkboth{目 次}{目 次} \end{center}}
+ \fi\chapter*{\begin{center} \vspace{-5truemm} 目 次\@mkboth{目 次}{目 次} \end{center}}
  \@starttoc{toc}\if@restonecol\twocolumn\fi}
 \def\l@part#1#2{\addpenalty{-\@highpenalty}
- \addvspace{2.25em plus 1pt} \begingroup
+ \addvspace{2.25em plus 1truept} \begingroup
  \@tempdima 3em \parindent \z@ \rightskip \@pnumwidth \parfillskip
 -\@pnumwidth 
  {\large \bf \leavevmode #1\hfil \hbox to\@pnumwidth{\hss #2}}\par
  \nobreak \endgroup}
 
 \def\listoffigures{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
- \fi\chapter*{\begin{center} \vspace{-5mm} 図 目 次\@mkboth
+ \fi\chapter*{\begin{center} \vspace{-5truemm} 図 目 次\@mkboth
  {図 目 次}{図 目 次} \end{center}}\@starttoc{lof}\if@restonecol\twocolumn
  \fi}
 \def\l@figure{\@dottedtocline{1}{1.5em}{2.3em}}
 \def\listoftables{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
- \fi\chapter*{\begin{center} \vspace{-5mm} 表 目 次\@mkboth
+ \fi\chapter*{\begin{center} \vspace{-5truemm} 表 目 次\@mkboth
  {表 目 次}{表 目 次} \end{center}}\@starttoc{lot}\if@restonecol
  \twocolumn\fi}
 \let\l@table\l@figure
@@ -210,21 +211,19 @@
 %
 %\clearpage
 \thispagestyle{empty}
-
-\vspace*{-2cm}
-\begin{minipage}[t]{3.2cm}
+\begin{minipage}[t]{36truemm}
 ~ \\
-\includegraphics[width=3.2cm]{\@TitleFig}
+\includegraphics[width=36truemm]{\@TitleFig}
 \end{minipage}
-\hspace{-3.6cm}
-\begin{minipage}[t]{14cm}
-\vspace*{1cm}
+\hspace{-36truemm}
+\begin{minipage}[t]{160truemm}
+\vspace*{10truemm}
 \begin{center}
 \begin{tabular}{c}
 	\@YearH 年度 ~~ 卒 ~~ 業 ~~ 論 ~~ 文
 \end{tabular}
 \end{center}
-\vspace{3cm}
+\vspace{30truemm}
 \begin{center}
 \begin{LARGE}
 \begin{tabular}{c}
@@ -233,7 +232,7 @@
 \end{tabular}
 \end{LARGE}
 \end{center}
-\vspace{4.0cm}
+\vspace{40truemm}
 \begin{center}
 \begin{large}
 \ifDOUBLETEACHER
@@ -248,7 +247,7 @@
 \fi
 \end{large}
 \end{center}
-\vspace{3cm}
+\vspace{40truemm}
 \begin{center}
 \begin{large}
 \begin{tabular}{c}
@@ -268,9 +267,9 @@
 
 \clearpage
 \thispagestyle{empty}
-\vspace*{-1.0cm}
-\hspace{-0.7cm}
-\begin{tabular}{|p{2.8cm}|p{0.5cm}|p{0.7cm}|p{3.0cm}|p{1.2cm}|p{3.8cm}|}
+\vspace*{-10truemm}
+%\hspace{-7truemm}
+\begin{tabular}{|p{20truemm}|p{41truemm}|p{7truemm}|p{30truemm}|p{12truemm}|p{40truemm}|}
 \hline
 \multicolumn{6}{|c|}
 	{{\bf \@YearH 年度 ~~~~~ 卒 ~ 業 ~ 論 ~ 文 ~ 概 ~ 要}} \\ \hline
@@ -283,32 +282,32 @@
 \multicolumn{6}{|c|}
 	~ \\ \hline
 \multicolumn{2}{|l|}
-	{\smash{\raisebox{-3mm}{{\bf メディア学部}}}} &
-	\multicolumn{1}{|c|}{\smash{\raisebox{-3mm}{{\bf 氏}}}} & &
-	\multicolumn{1}{|c|}{\smash{\raisebox{-3mm}{{\bf 指導}}}} &
+	{\smash{\raisebox{-3truemm}{{\bf メディア学部}}}} &
+	\multicolumn{1}{|c|}{\smash{\raisebox{-3truemm}{{\bf 氏}}}} & &
+	\multicolumn{1}{|c|}{\smash{\raisebox{-3truemm}{{\bf 指導}}}} &
 \ifDOUBLETEACHER
-	\multicolumn{1}{|c|}{\smash{\raisebox{-3mm}{\@TeacherName}}}
+	\multicolumn{1}{|c|}{\smash{\raisebox{-3truemm}{\@TeacherName}}}
 \fi
 	\\
 \multicolumn{2}{|l|}
-	{\smash{\raisebox{-3mm}{{\bf 学籍番号 : \@AuthorNumber}}}} &
-	\multicolumn{1}{|c|}{\smash{\raisebox{-3mm}{{\bf 名}}}} &
+	{\smash{\raisebox{-3truemm}{{\bf 学籍番号 : \@AuthorNumber}}}} &
+	\multicolumn{1}{|c|}{\smash{\raisebox{-3truemm}{{\bf 名}}}} &
 	\multicolumn{1}{|c|}{\@AuthorName} &
-	\multicolumn{1}{|c|}{\smash{\raisebox{-3mm}{{\bf 教員}}}} &
+	\multicolumn{1}{|c|}{\smash{\raisebox{-3truemm}{{\bf 教員}}}} &
 \ifDOUBLETEACHER
-	\multicolumn{1}{|c|}{\smash{\raisebox{-3mm}{\@TeacherNameII}}} \\
+	\multicolumn{1}{|c|}{\smash{\raisebox{-3truemm}{\@TeacherNameII}}} \\
 \else
 	\multicolumn{1}{|c|}{\@TeacherName} \\
 \fi
 \multicolumn{2}{|c|}{} & & & & \\ \hline
-\multirow{2}{3cm}{\bf キーワード} &
+\multirow{2}{30truemm}{\bf キーワード} &
 	\multicolumn{5}{|l|}{\@KeyWordsI} \\
 & \multicolumn{5}{|l|}{\@KeyWordsII} \\ \hline
-\multicolumn{6}{|p{14cm}|}{
-	\begin{minipage}[t]{0cm}
-		\rule[-13.5cm]{0pt}{0pt}
+\multicolumn{6}{|p{150truemm}|}{
+	\begin{minipage}[t]{0truemm}
+		\rule[-145truemm]{0truemm}{0truemm}
 	\end{minipage}
-	\begin{minipage}[t]{13.7cm}
+	\begin{minipage}[t]{147truemm}
 		\parindent 1em
 		\@Abstract
 	\end{minipage}
