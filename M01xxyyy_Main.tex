@@ -1,3 +1,4 @@
+\RequirePackage{plautopatch}
 \documentclass[12pt,a4paper,report,uplatex,dvipdfmx]{jsbook}
 \usepackage{mediathesis} % 卒論用パッケージ
 
@@ -5,16 +6,16 @@
 \graphicspath{{fig/}} %% グラフィック用
 \makeatletter
 \providecommand*{\input@path}{}
-\g@addto@macro\input@path{{src/}{suppl/}}% tex ソースファイル用
+\g@addto@macro\input@path{{src/}}% tex ソースファイル用
 \makeatother
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%% タイトル・概要設定 %%%%
-\input{src/preface}
+\input{preface}
 
 % 概要
 \Abstract{
-\input{src/abstract}
+\input{abstract}
 }
 
 
@@ -60,20 +61,16 @@
 \clearpage
 \pagenumbering{arabic}		% 本文用ページスタイル
 \pagestyle{plain}		% 本文ページ番号位置
-\baselineskip 24pt		% 行間設定
+\baselineskip=23pt		% 行間設定
 
 % ここから本文ファイルを挿入
 
-\input{chap1}     %本来は章の内容がわかる名前にしたほうが良い(01intro.tex　のように )
-\input{chap2}
-\input{chap3}			% (ファイルを作成次第有効化)
-% \input{chap4}			% (ファイルを作成次第有効化)
-% \input{chap5}			% (ファイルを作成次第有効化)
-% \input{chap6}			% (ファイルを作成次第有効化)
+\input{introduction}		% 第1章
+\input{method}			% 第2章
 
 \delchapnumber
 \input{thanks}			% 謝辞
-\bibliography{jxampl}		% BibTeXを使う場合の参考文献リスト（jxampl.bibを指定してある）
+\bibliography{BibTeX}		% BibTeXを使う場合の参考文献リスト
 \bibliographystyle{junsrt}	% BibTeXを使う場合のスタイル
 \undochapnumber
 % \appendix			% 付録 (もしあれば)

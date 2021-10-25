@@ -19,19 +19,21 @@
 % ver 7.01	: 2017/11/06 : 表紙スタイルを若干修正 (by T.Watanabe)
 % ver 7.02	: 2018/11/06 : LaTeXで寸法の扱い方が変わったのでそれに合わせて変更
 % ver 8.00	: 2019/10/28 : 画像形式を EPS 以外を利用できるように修正
+% ver 9.00	: 2021/05/25 : upLaTeX 対応
 
 \typeout{Thesis style for Under Graduate School of Media Science,}
-\typeout{Ver 8.00 by Taichi Watanabe.}
+\typeout{ Ver 9.00 by Taichi Watanabe. (earth@gamescience.jp) }
 
 \usepackage{amsmath, amssymb}
-\usepackage[dvipdfmx]{graphicx}
-\usepackage{multirow}
+\usepackage{graphicx, color}
+\usepackage{hyperref}
+\usepackage{pxjahyper}
 \usepackage{float}
 \usepackage{ascmac}
 \usepackage{url}
 \usepackage{lineno}
-\usepackage[dvipdfmx]{hyperref}
-\usepackage{pxjahyper}
+\usepackage{multirow}
+\usepackage{pxbase}
 
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
@@ -77,7 +79,9 @@
  \@nochapnumber=0
 }
 
-\def\@makechapterhead#1{ \vspace*{50truept} { \parindent 0truept \raggedright 
+\def\@makechapterhead#1{
+% \vspace*{5.0truept}
+ { \parindent 0truept \raggedright 
  \ifnum \c@secnumdepth >\m@ne \huge\bf \begin{center}
  \ifnum \@flagappendix>0
  	\@chapapp{} \thechapter\space \par 
@@ -127,7 +131,7 @@
 % 目次をセンターに持っていく。
 
 \def\tableofcontents{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
- \fi\chapter*{\begin{center} \vspace{-5truemm} 目 次\@mkboth{目 次}{目 次} \end{center}}
+ \fi\chapter*{ \begin{center} \vspace{-30truemm} 目 次\@mkboth{目 次}{目 次} \end{center}}
  \@starttoc{toc}\if@restonecol\twocolumn\fi}
 \def\l@part#1#2{\addpenalty{-\@highpenalty}
  \addvspace{2.25em plus 1truept} \begingroup
@@ -137,12 +141,12 @@
  \nobreak \endgroup}
 
 \def\listoffigures{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
- \fi\chapter*{\begin{center} \vspace{-5truemm} 図 目 次\@mkboth
+ \fi\chapter*{\begin{center} \vspace{-30truemm} 図 目 次\@mkboth
  {図 目 次}{図 目 次} \end{center}}\@starttoc{lof}\if@restonecol\twocolumn
  \fi}
 \def\l@figure{\@dottedtocline{1}{1.5em}{2.3em}}
 \def\listoftables{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
- \fi\chapter*{\begin{center} \vspace{-5truemm} 表 目 次\@mkboth
+ \fi\chapter*{\begin{center} \vspace{-30truemm} 表 目 次\@mkboth
  {表 目 次}{表 目 次} \end{center}}\@starttoc{lot}\if@restonecol
  \twocolumn\fi}
 \let\l@table\l@figure
@@ -165,14 +169,6 @@
 \def\@TeacherName{}
 \def\TitleFig#1{\gdef\@TitleFig{#1}}
 \def\@TitleFig{}
-
-\newif\ifDOUBLETEACHER
-\DOUBLETEACHERfalse
-\def\TeacherNameII#1{
-	\gdef\@TeacherNameII{#1}
-	\DOUBLETEACHERtrue
-}
-\def\@TeacherNameII{}
 
 \def\ProjectName#1{\gdef\@ProjectName{#1}}
 \def\@ProjectName{}
@@ -236,16 +232,9 @@
 \vspace{40truemm}
 \begin{center}
 \begin{large}
-\ifDOUBLETEACHER
-\begin{tabular}{r l}
-	{\normalsize 指導教員：}{\normalsize \@TeacherName}\\
-	{}{\normalsize \@TeacherNameII}
-\end{tabular}
-\else
 \begin{tabular}{c}
 	{\normalsize 指導教員：\@TeacherName}
 \end{tabular}
-\fi
 \end{large}
 \end{center}
 \vspace{40truemm}
@@ -286,20 +275,13 @@
 	{\smash{\raisebox{-3truemm}{{\bf メディア学部}}}} &
 	\multicolumn{1}{|c|}{\smash{\raisebox{-3truemm}{{\bf 氏}}}} & &
 	\multicolumn{1}{|c|}{\smash{\raisebox{-3truemm}{{\bf 指導}}}} &
-\ifDOUBLETEACHER
-	\multicolumn{1}{|c|}{\smash{\raisebox{-3truemm}{\@TeacherName}}}
-\fi
 	\\
 \multicolumn{2}{|l|}
 	{\smash{\raisebox{-3truemm}{{\bf 学籍番号 : \@AuthorNumber}}}} &
 	\multicolumn{1}{|c|}{\smash{\raisebox{-3truemm}{{\bf 名}}}} &
 	\multicolumn{1}{|c|}{\@AuthorName} &
 	\multicolumn{1}{|c|}{\smash{\raisebox{-3truemm}{{\bf 教員}}}} &
-\ifDOUBLETEACHER
-	\multicolumn{1}{|c|}{\smash{\raisebox{-3truemm}{\@TeacherNameII}}} \\
-\else
 	\multicolumn{1}{|c|}{\@TeacherName} \\
-\fi
 \multicolumn{2}{|c|}{} & & & & \\ \hline
 \multirow{2}{30truemm}{\bf キーワード} &
 	\multicolumn{5}{|l|}{\@KeyWordsI} \\

@@ -1,11 +1,19 @@
-$latex         = 'uplatex %O -src-specials -shell-escape -interaction=nonstopmode -synctex=1 -kanji=utf8 %S';
-$bibtex        = 'upbibtex %O %B -kanji=utf8';
-$dvipdf        = 'dvipdfmx %O -o %D %S';
-$pdf_mode      = 3; # use dvipdfmx
+#!/usr/bin/env perl
+$latex            = 'uplatex -synctex=1 -halt-on-error';
+$latex_silent     = 'uplatex -synctex=1 -halt-on-error -interaction=batchmode';
+$bibtex           = 'upbibtex';
+$dvipdf           = 'dvipdfmx -d 5 %O -o %D %S';
+$makeindex        = 'mendex %O -o %D %S';
+$max_repeat       = 5;
+$pdf_mode	  = 3; # generates pdf via dvipdfmx
 
-# Use SumatraPDF and atom inverse search
-# please replace maruta by your username
-#$pdf_previewer = '"C:\Program Files\SumatraPDF\SumatraPDF.exe" -reuse-instance -inverse-search "\"C:\Users\maruta\AppData\Local\atom\bin\atom.cmd\" \"%f:%l\"" %O %S';
+# Prevent latexmk from removing PDF after typeset.
+# This enables Skim to chase the update in PDF automatically.
+$pvc_view_file_via_temporary = 0;
 
-# if you do not need to preview in -pvc option (preview document and countinuously update mode)
-$pdf_previewer = 'exit';
+# Use Skim as a previewer
+# for Mac
+#$pdf_previewer    = "open";
+
+# for Win
+#$pdf_previewer    = "start";

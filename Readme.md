@@ -11,4 +11,7 @@
 2019年も同じものを利用する
 
 2020-10-20
- 2020年度用改変
+ 2020年度用改変 from gamescience lab
+ https://gamescience.jp/GS_LaTeX/History.html
+
+ 
