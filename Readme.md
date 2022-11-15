@@ -13,5 +13,9 @@
 2020-10-20
  2020年度用改変 from gamescience lab
  https://gamescience.jp/GS_LaTeX/History.html
+ 
+2022-11-15
+ 2022年度用に改変. (from GameScience ) 
+ 
 
  
