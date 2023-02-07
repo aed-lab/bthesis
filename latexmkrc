@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-$latex            = 'uplatex -synctex=1 -halt-on-error';
+$latex            = 'uplatex -synctex=1 -halt-on-error　-interaction=nonstopmode';
 $latex_silent     = 'uplatex -synctex=1 -halt-on-error -interaction=batchmode';
 $bibtex           = 'upbibtex';
 $dvipdf           = 'dvipdfmx -d 5 %O -o %D %S';
