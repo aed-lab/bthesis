@@ -11,16 +11,19 @@
 2019年も同じものを利用する
 
 2020-10-20
- 2020年度用改変 from gamescience lab
- https://gamescience.jp/GS_LaTeX/History.html
+- 2020年度用改変 from gamescience lab
+  (https://gamescience.jp/GS_LaTeX/History.html)
  
 2022-11-15
- 2022年度用に改変. (from GameScience ) 
+- 2022年度用に改変. (from GameScience ) 
  
 2023-11-13
 - スタイルファイルを styフォルダに移動
 - bibファイルを bibフォルダに移動
 - latexmkrc に上記のpathを設定
+- EPSだったタイトルのロゴをpdfに変更（docker対策)
+
+2024-02-08
+- 提出月を自動生成するように変更
 
 
- 

@@ -19,4 +19,5 @@ $pvc_view_file_via_temporary = 0;
 #$pdf_previewer    = "start";
 
 ensure_path('TEXINPUTS', './sty//');
+ensure_path('TEXINPUTS', './src//');
 ensure_path('BIBINPUTS', './bib//');
