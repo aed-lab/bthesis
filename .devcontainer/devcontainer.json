@@ -1,0 +1,15 @@
+{
+    "name": "TeX Live",
+    "image": "eguchi1611/texlive-sci-ja:latest",
+    "customizations": {
+      "vscode": {
+        "extensions": ["James-Yu.latex-workshop",
+                "MS-CEINTL.vscode-language-pack-ja",
+                "mhutchie.git-graph"],
+        "settings": {
+          "latex-workshop.latex.recipe.default": "latexmk (latexmkrc)"
+        }
+      }
+    },
+    "remoteUser": "vscode"
+  }
