@@ -1,15 +1,18 @@
 {
-    "name": "TeX Live",
+    "name": "TeXLive",
     "image": "eguchi1611/texlive-sci-ja:latest",
+    "postCreateCommand": "sh .devcontainer/postCreateCommand.sh",
     "customizations": {
       "vscode": {
-        "extensions": ["James-Yu.latex-workshop",
-                "MS-CEINTL.vscode-language-pack-ja",
-                "mhutchie.git-graph"],
+        "extensions": [
+          "James-Yu.latex-workshop",
+          "MS-CEINTL.vscode-language-pack-ja",
+          "mhutchie.git-graph"
+        ],
         "settings": {
-          "latex-workshop.latex.recipe.default": "latexmk (latexmkrc)"
+          "extensions.verifySignature": false
         }
       }
     },
     "remoteUser": "vscode"
-  }
+}

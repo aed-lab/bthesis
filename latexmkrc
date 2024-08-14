@@ -7,9 +7,11 @@ $makeindex        = 'mendex %O -o %D %S';
 $max_repeat       = 5;
 $pdf_mode	  = 3; # generates pdf via dvipdfmx
 
+$out_dir = 'out';
+
 # Prevent latexmk from removing PDF after typeset.
 # This enables Skim to chase the update in PDF automatically.
-$pvc_view_file_via_temporary = 0;
+# $pvc_view_file_via_temporary = 0;
 
 # Use Skim as a previewer
 # for Mac
@@ -18,6 +20,7 @@ $pvc_view_file_via_temporary = 0;
 # for Win
 #$pdf_previewer    = "start";
 
-ensure_path('TEXINPUTS', './sty//');
 ensure_path('TEXINPUTS', './src//');
+ensure_path('TEXINPUTS', './sty//');
 ensure_path('BIBINPUTS', './bib//');
+ensure_path('BSTINPUTS', './sty//');
