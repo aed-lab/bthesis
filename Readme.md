@@ -33,3 +33,9 @@
 - vscode devcontainer を利用するように変更
 - outputフォルダに出力をまとめるように変更（PDFはoutputの中にできる) 
 
+2026-08-11
+- VScode Devcontainer / Github codespacesを利用
+- 使うコンテナをtexlive-sci-jaから paperist に変更（容量削減）
+- draw.io インテグレーションを追加
+
+

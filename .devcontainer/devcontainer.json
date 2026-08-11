@@ -1,18 +1,53 @@
 {
-    "name": "TeXLive",
-    "image": "eguchi1611/texlive-sci-ja:latest",
-    "postCreateCommand": "sh .devcontainer/postCreateCommand.sh",
-    "customizations": {
-      "vscode": {
-        "extensions": [
-          "James-Yu.latex-workshop",
-          "MS-CEINTL.vscode-language-pack-ja",
-          "mhutchie.git-graph"
+  "name": "Japanese Academic LaTeX",
+
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+
+  "remoteUser": "vscode",
+
+  "postCreateCommand": "git config --global --add safe.directory \"${containerWorkspaceFolder}\"",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "tuttieee.emacs-mcx",
+        "James-Yu.latex-workshop",
+        "MS-CEINTL.vscode-language-pack-ja",
+        "hediet.vscode-drawio",
+        "mhutchie.git-graph"
+      ],
+
+      "settings": {
+        "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?　、。「」【】『』（）！？てにをはがのともへでや",
+
+        "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+        "latex-workshop.formatting.latex": "latexindent",
+        "latex-workshop.latex.autoBuild.run": "onSave",
+        "latex-workshop.latex.outDir": "%DIR%/out",
+        "latex-workshop.view.pdf.viewer": "tab",
+        "latex-workshop.synctex.afterBuild.enabled": true,
+
+        "latex-workshop.latex.tools": [
+          {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+              "%DOC%"
+            ]
+          }
         ],
-        "settings": {
-          "extensions.verifySignature": false
-        }
+
+        "latex-workshop.latex.recipes": [
+          {
+            "name": "latexmk",
+            "tools": [
+              "latexmk"
+            ]
+          }
+        ]
       }
-    },
-    "remoteUser": "vscode"
+    }
+  }
 }

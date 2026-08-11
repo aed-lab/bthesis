@@ -41,6 +41,10 @@
 *.synctex.gz(busy)
 *.pdfsync
 
+## Build tool directories for auxiliary files
+# latexrun
+out/
+
 ## Auxiliary and intermediate files from other packages:
 # algorithms
 *.alg
