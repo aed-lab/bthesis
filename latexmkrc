@@ -49,7 +49,7 @@ ensure_path(
     'TEXINPUTS',
     './sty//',
     './src//',
-    './figs//'
+    './fig//'
 );
 
 # BibTeX style (.bst)

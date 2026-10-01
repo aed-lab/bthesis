@@ -14,6 +14,7 @@ RUN apt-get update \
         openssh-client \
         ca-certificates \
         locales \
+        poppler-utils \
     && printf 'en_US.UTF-8 UTF-8\nja_JP.UTF-8 UTF-8\n' > /etc/locale.gen \
     && locale-gen \
     && rm -rf /var/lib/apt/lists/*

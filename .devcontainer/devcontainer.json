@@ -20,8 +20,9 @@
       ],
 
       "settings": {
+        "files.insertFinalNewline": true,
+        "files.trimTrailingWhitespace": true, 
         "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?　、。「」【】『』（）！？てにをはがのともへでや",
-
         "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
         "latex-workshop.formatting.latex": "latexindent",
         "latex-workshop.latex.autoBuild.run": "onSave",

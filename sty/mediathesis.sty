@@ -20,9 +20,14 @@
 % ver 7.02	: 2018/11/06 : LaTeXで寸法の扱い方が変わったのでそれに合わせて変更
 % ver 8.00	: 2019/10/28 : 画像形式を EPS 以外を利用できるように修正
 % ver 9.00	: 2021/05/25 : upLaTeX 対応
+% ver 10.00	: 2023/10/23 : config.tex 新設。
+% ver 10.01	: 2023/12/03 : hyperref関連の警告出力に対応
+% ver 10.02	: 2023/12/26 : 概要ページ中の multirow 仕様変更に対応
+% ver 10.03	: 2024/07/08 : 2024年度対応
+% ver 10.04	: 2025/11/03 : 2025年度対応
 
 \typeout{Thesis style for Under Graduate School of Media Science,}
-\typeout{ Ver 9.00 by Taichi Watanabe. (earth@gamescience.jp) }
+\typeout{ Ver 10.04 by Taichi Watanabe. (earth@gamescience.jp) }
 
 \usepackage{amsmath, amssymb}
 \usepackage{graphicx, color}
@@ -34,12 +39,15 @@
 \usepackage{lineno}
 \usepackage{multirow}
 \usepackage{pxbase}
+\usepackage{comment}
 
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
 
 \def\@capfigure{図}
 \def\@captable{表}
+% \def\@capfigure{Fig}
+% \def\@captable{Table}
 
 \def\thebibliography#1{\chapter{参考文献\@mkboth
  {関 連 書 籍}{関 連 書 籍}}\list
@@ -82,7 +90,7 @@
 \def\@makechapterhead#1{
 % \vspace*{5.0truept}
  { \parindent 0truept \raggedright 
- \ifnum \c@secnumdepth >\m@ne \huge\bf \begin{center}
+ \ifnum \c@secnumdepth >\m@ne \huge\bfseries \begin{center}
  \ifnum \@flagappendix>0
  	\@chapapp{} \thechapter\space \par 
  \else
@@ -92,12 +100,14 @@
 		\addtocounter{chapter}{-1}
 	\fi
  \fi
- \vskip 20truept \fi \Huge \bf #1\par 
+ \vskip 20truept \fi \Huge \bfseries #1\par 
  \end{center}
  \nobreak \vskip 40truept } }
 
-\def\chapter{\clearpage \thispagestyle{plain} \global\@topnum\z@
+\def\chapter{
+\clearpage \thispagestyle{plain} \global\@topnum\z@
 \@afterindenttrue \secdef\@chapter\@schapter} 
+
 \def\@chapter[#1]#2{\ifnum \c@secnumdepth >\m@ne
  \refstepcounter{chapter}
  \ifnum \@flagappendix>0
@@ -130,26 +140,38 @@
 
 % 目次をセンターに持っていく。
 
-\def\tableofcontents{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
- \fi\chapter*{ \begin{center} \vspace{-30truemm} 目 次\@mkboth{目 次}{目 次} \end{center}}
- \@starttoc{toc}\if@restonecol\twocolumn\fi}
-\def\l@part#1#2{\addpenalty{-\@highpenalty}
- \addvspace{2.25em plus 1truept} \begingroup
- \@tempdima 3em \parindent \z@ \rightskip \@pnumwidth \parfillskip
--\@pnumwidth 
- {\large \bf \leavevmode #1\hfil \hbox to\@pnumwidth{\hss #2}}\par
- \nobreak \endgroup}
+\renewcommand{\contentsname}{
+	\makebox[\linewidth]{\hfill 目\hspace{1zw}次\hfill}
+}
 
-\def\listoffigures{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
- \fi\chapter*{\begin{center} \vspace{-30truemm} 図 目 次\@mkboth
- {図 目 次}{図 目 次} \end{center}}\@starttoc{lof}\if@restonecol\twocolumn
- \fi}
-\def\l@figure{\@dottedtocline{1}{1.5em}{2.3em}}
-\def\listoftables{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
- \fi\chapter*{\begin{center} \vspace{-30truemm} 表 目 次\@mkboth
- {表 目 次}{表 目 次} \end{center}}\@starttoc{lot}\if@restonecol
- \twocolumn\fi}
-\let\l@table\l@figure
+\renewcommand{\listfigurename}{
+	\makebox[\linewidth]{\hfill 図~目~次\hfill}
+}
+
+\renewcommand{\listtablename}{
+	\makebox[\linewidth]{\hfill 表~目~次\hfill}
+}
+
+%\def\tableofcontents{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
+% \fi\chapter*{ \begin{center} \vspace{-30truemm} 目 次\@mkboth{目 次}{目 次} \end{center}}
+% \@starttoc{toc}\if@restonecol\twocolumn\fi}
+%\def\l@part#1#2{\addpenalty{-\@highpenalty}
+% \addvspace{2.25em plus 1truept} \begingroup
+% \@tempdima 3em \parindent \z@ \rightskip \@pnumwidth \parfillskip
+%-\@pnumwidth 
+% {\large \bfseries \leavevmode #1\hfil \hbox to\@pnumwidth{\hss #2}}\par
+% \nobreak \endgroup}
+%
+%\def\listoffigures{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
+% \fi\chapter*{\begin{center} \vspace{-30truemm} 図 目 次\@mkboth
+% {図 目 次}{図 目 次} \end{center}}\@starttoc{lof}\if@restonecol\twocolumn
+% \fi}
+%\def\l@figure{\@dottedtocline{1}{1.5em}{2.3em}}
+%\def\listoftables{\@restonecolfalse\if@twocolumn\@restonecoltrue\onecolumn
+% \fi\chapter*{\begin{center} \vspace{-30truemm} 表 目 次\@mkboth
+% {表 目 次}{表 目 次} \end{center}}\@starttoc{lot}\if@restonecol
+% \twocolumn\fi}
+%\let\l@table\l@figure
 
 \def\YearH#1{\gdef\@YearH{#1}}
 \def\@YearH{}
@@ -178,17 +200,6 @@
 \def\@KeyWordsII{}
 \def\Abstract#1{\gdef\@Abstract{#1}}
 \def\@Abstract{}
-
-\newcommand{\EPSorEPDF}[2]{%
- 	\ifnum \@FigureType=1
-		\mbox{
-		\pdfimage width #1
-		{#2.pdf}}
- 	\else
-%		\epsfxsize=#1
-		\mbox{\includegraphics[width=#1]{#2.eps}}
- 	\fi
-}
 
 \newcommand{\MediaThesisTitle}{%
 % \YearH		% 年度（半角）
@@ -262,9 +273,9 @@
 \begin{tabular}{|p{20truemm}|p{41truemm}|p{7truemm}|p{30truemm}|p{12truemm}|p{40truemm}|}
 \hline
 \multicolumn{6}{|c|}
-	{{\bf \@YearH 年度 ~~~~~ 卒 ~ 業 ~ 論 ~ 文 ~ 概 ~ 要}} \\ \hline
+	{\textbf{\@YearH 年度 ~~~~~ 卒 ~ 業 ~ 論 ~ 文 ~ 概 ~ 要}} \\ \hline
 \multicolumn{6}{|l|}
-	{{\small {\bf 論文題目}}} \\
+	{{\small \textbf{論文題目}}} \\
 \multicolumn{6}{|c|}
 	{{\large \@PaperTitle}} \\
 \multicolumn{6}{|c|}
@@ -272,18 +283,18 @@
 \multicolumn{6}{|c|}
 	~ \\ \hline
 \multicolumn{2}{|l|}
-	{\smash{\raisebox{-3truemm}{{\bf メディア学部}}}} &
-	\multicolumn{1}{|c|}{\smash{\raisebox{-3truemm}{{\bf 氏}}}} & &
-	\multicolumn{1}{|c|}{\smash{\raisebox{-3truemm}{{\bf 指導}}}} &
+	{\smash{\raisebox{-3truemm}{\textbf{メディア学部}}}} &
+	\multicolumn{1}{|c|}{\smash{\raisebox{-3truemm}{\textbf{氏}}}} & &
+	\multicolumn{1}{|c|}{\smash{\raisebox{-3truemm}{\textbf{指導}}}} &
 	\\
 \multicolumn{2}{|l|}
-	{\smash{\raisebox{-3truemm}{{\bf 学籍番号 : \@AuthorNumber}}}} &
-	\multicolumn{1}{|c|}{\smash{\raisebox{-3truemm}{{\bf 名}}}} &
+	{\smash{\raisebox{-3truemm}{\textbf{学籍番号 : \@AuthorNumber}}}} &
+	\multicolumn{1}{|c|}{\smash{\raisebox{-3truemm}{\textbf{名}}}} &
 	\multicolumn{1}{|c|}{\@AuthorName} &
-	\multicolumn{1}{|c|}{\smash{\raisebox{-3truemm}{{\bf 教員}}}} &
+	\multicolumn{1}{|c|}{\smash{\raisebox{-3truemm}{\textbf{教員}}}} &
 	\multicolumn{1}{|c|}{\@TeacherName} \\
 \multicolumn{2}{|c|}{} & & & & \\ \hline
-\multirow{2}{30truemm}{\bf キーワード} &
+\multirow{2}{*}{\textbf{キーワード}} &
 	\multicolumn{5}{|l|}{\@KeyWordsI} \\
 & \multicolumn{5}{|l|}{\@KeyWordsII} \\ \hline
 \multicolumn{6}{|p{150truemm}|}{
@@ -301,11 +312,3 @@
 
 \newcount\@FigureType
 \@FigureType=0
-
-\def\FigureEPDF{\par
- \@FigureType=1
-}
-\def\FigureEPS{\par
- \@FigureType=0
-}
-

@@ -1,0 +1,80 @@
+\RequirePackage{plautopatch}
+\documentclass[12pt,a4paper,report,uplatex,dvipdfmx]{jsbook}
+\usepackage{mediathesis} % 卒論用パッケージ
+
+%% Include path の設定
+\graphicspath{{fig/}} %% グラフィック用
+%\makeatletter
+%\providecommand*{\input@path}{}
+%\g@addto@macro\input@path{{src/}}% tex ソースファイル用
+%\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% タイトル・概要設定 %%%%
+\input{preface}
+
+
+% 概要
+\Abstract{
+\input{abstract}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% 寸法設定 %%%%
+
+\setlength{\textwidth}{170truemm}		% 本文横幅
+\setlength{\textheight}{230truemm}		% 本文縦幅
+\setlength{\topmargin}{-5truemm}		% 上部マージン調整
+\setlength{\oddsidemargin}{-4truemm}		% 奇数ページ左余白
+\setlength{\evensidemargin}{\oddsidemargin}	% 偶数ページ左余白
+\setlength\abovecaptionskip{-0.5truemm}		% 図キャプションと図との間隔
+\setlength\belowcaptionskip{1.5truemm}		% 表キャプションと表との間隔
+
+%%%% 各種マクロ例 %%%%
+
+\newcommand{\bez}{\mbox{$\mathrm{B \acute{e} zier}$}}
+\newcommand{\dw}[2]{\mbox{$\mathrm{{#1}_{#2}}$}}
+\newcommand{\uw}[2]{\mbox{$\mathrm{{#1}^{#2}}$}}
+
+%%%% PDF ハイパーリンク各種設定 %%%%
+
+\hypersetup{
+        bookmarksnumbered=true,
+        colorlinks=false,
+        setpagesize=false
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ここより本文開始
+
+\begin{document}
+
+\pagewiselinenumbers		% 行番号付加 (本番印刷の際はコメントアウト)
+
+\MediaThesisTitle		% タイトル作成
+
+\pagenumbering{Roman}		% 目次用ページスタイル
+\tableofcontents		% 目次
+\listoffigures			% 図目次(必要に応じて有効化/無効化)
+%\listoftables			% 表目次(必要に応じて有効化/無効化)
+\clearpage
+\pagenumbering{arabic}		% 本文用ページスタイル
+\pagestyle{plain}		% 本文ページ番号位置
+\baselineskip=23pt		% 行間設定
+
+% ここから本文ファイルを挿入
+
+\input{introduction}		% 第1章
+\input{method}			% 第2章
+
+\delchapnumber
+\input{thanks}			% 謝辞
+\bibliography{BibTeX}		% BibTeXを使う場合の参考文献リスト
+\bibliographystyle{junsrt}	% BibTeXを使う場合のスタイル
+\undochapnumber
+% \appendix			% 付録 (もしあれば)
+% \input{appendix}		% 付録ファイルの挿入
+
+\end{document}
