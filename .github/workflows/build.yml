@@ -1,3 +1,4 @@
+# .github/workflows/build.yml
 name: Build thesis
 
 on:
@@ -13,13 +14,16 @@ jobs:
       image: paperist/texlive-ja:latest
 
     steps:
-      - uses: actions/checkout@v6
+      - name: Checkout
+        uses: actions/checkout@v6
 
-      - name: Build
+      - name: Build PDF
         run: latexmk main.tex
 
       - name: Upload PDF
+        if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: thesis
+          name: thesis-pdf
           path: out/main.pdf
+          retention-days: 14
