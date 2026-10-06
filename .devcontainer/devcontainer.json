@@ -1,9 +1,7 @@
 {
   "name": "Japanese Academic LaTeX",
 
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
+  "image": "ghcr.io/aed-lab/thesis-latex:2026.1",
 
   "remoteUser": "vscode",
 
@@ -21,13 +19,16 @@
 
       "settings": {
         "files.insertFinalNewline": true,
-        "files.trimTrailingWhitespace": true, 
+        "files.trimTrailingWhitespace": true,
+
         "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?　、。「」【】『』（）！？てにをはがのともへでや",
-        "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+
         "latex-workshop.formatting.latex": "latexindent",
         "latex-workshop.latex.autoBuild.run": "onSave",
         "latex-workshop.latex.outDir": "%DIR%/out",
+
         "latex-workshop.view.pdf.viewer": "tab",
+        "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
         "latex-workshop.synctex.afterBuild.enabled": true,
 
         "latex-workshop.latex.tools": [
