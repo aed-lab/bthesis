@@ -5,8 +5,8 @@
 
   "remoteUser": "vscode",
 
-  "postCreateCommand": "git config --global --add safe.directory \"${containerWorkspaceFolder}\"",
-
+  "postCreateCommand": "git config --global --add safe.directory \"${containerWorkspaceFolder}\" && bash .devcontainer/codespaces-setup.sh",
+  
   "customizations": {
     "vscode": {
       "extensions": [
