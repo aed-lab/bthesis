@@ -10,7 +10,6 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "tuttieee.emacs-mcx",
         "James-Yu.latex-workshop",
         "MS-CEINTL.vscode-language-pack-ja",
         "hediet.vscode-drawio",
