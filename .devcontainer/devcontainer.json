@@ -1,7 +1,7 @@
 {
   "name": "Japanese Academic LaTeX",
 
-  "image": "ghcr.io/aed-lab/thesis-latex:2026.1",
+  "image": "ghcr.io/aed-lab/thesis-latex:2026.2",
 
   "remoteUser": "vscode",
 
